@@ -1,0 +1,10 @@
+// Importation des styles abstraits
+@import './base/variables/typography';
+@import './base/variables/colors';
+@import './base/variables/breakpoint';
+
+// Importation des styles de mise en page
+@import './layout/global';
+@import './layout/header';
+@import './layout/footer';
+@import './layout/contact-overlay';

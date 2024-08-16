@@ -1,0 +1,59 @@
+.site-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 31px;
+    padding-top: 1px;
+    padding-bottom: 8px;
+    border-top: solid 1px var(--color-main-text);
+
+    &__navigation {
+        align-self: center;
+
+        &--menu {
+            display: flex;
+            list-style: none;
+            gap: 5.375rem;
+            padding: 0;
+            margin: 0;
+
+            .menu-item {
+                text-transform: uppercase;
+                font-size: 16px;
+                font-weight: 400;
+                font-style: normal;
+                line-height: normal;
+
+                a {
+                    color: var(--color-main-text);
+                    text-decoration: none;
+                    
+                }
+                
+                a:hover {
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES
+   ========================================================================== */
+/* Media Queries - NAVIGATION
+   ========================================================================== */
+
+/* TABLET breakpoint */
+@media (max-width: $breakpoint__tablet) {
+    .site-footer {
+        height: 208px;
+
+        &__navigation--menu {
+            text-align: center;
+            flex-direction: column;
+            gap: 2.25rem;
+        }
+    }
+}

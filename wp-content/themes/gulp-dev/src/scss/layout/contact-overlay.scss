@@ -1,0 +1,193 @@
+/* Overlay Contact */
+.contact-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.contact-overlay__container {
+    width: 597px;
+    overflow: hidden;
+    border: solid var(--color-main-text);
+    background-color: var(--color-main-bg);
+    .fa-circle-xmark {
+        display: none;
+    }
+
+    .contact-overlay__header {
+        width: 886px;
+        margin-top: 18px;
+
+      
+
+        .contact-overlay__header-wrapper {
+            position: relative;
+            right: 8.95rem;
+
+        }
+
+        .contact-overlay__header-wrapper:nth-of-type(2) {
+            right: 6.5rem;
+        }
+
+    }
+}
+
+/* Contact Form 7 */
+.wpcf7-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+        margin-top: 24px;
+        margin-bottom: 0px;
+    }
+
+    p:nth-of-type(1) {
+        margin-top: 46px;
+    }
+
+    p>label {
+        font-family: Poppins;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+
+    }
+
+    &-control {
+        width: 263px;
+        height: 40px;
+        border-radius: 8px;
+        border: 1px solid #B8BBC2;
+        background: #FFF;
+    }
+}
+
+form.wpcf7-form input[type="text"],
+form.wpcf7-form input[type="email"] {
+    /* Your styles here */
+    margin-top: 3px;
+    font-family: Poppins;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* Textarea */
+.wpcf7-textarea {
+    height: 210px;
+    resize: none;
+
+}
+
+/* Submit Button */
+.wpcf7-submit {
+    display: block;
+    margin: 0 auto;
+    margin-top: 18px;
+    width: 263px;
+    height: 50px;
+    padding: 8px 15px;
+    font-family: "Space Mono";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    border-radius: 0px;
+    background-color: var(--color-button-primary-bg);
+}
+
+
+
+.hidden {
+    display: none;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+}
+
+
+@media (max-width: $breakpoint__tablet) {
+    .contact-overlay__container {
+        width: 286px;
+        height: 90vh;
+    }
+
+    .wpcf7-form-control {
+        width: 190px;
+    }
+
+    .wpcf7-not-valid-tip,
+    .wpcf7-response-output {
+        font-size: 0.8em;
+    }
+
+    .contact-overlay__header--image {
+        width: 145px;
+    }
+    .contact-overlay__container {
+        .contact-overlay__header {
+            margin-top: 6px;
+            .contact-overlay__header-wrapper {
+                right: 5.8rem;
+                
+            }
+            .contact-overlay__header-wrapper:nth-of-type(2) {
+                right: 4.4rem;
+            }
+        }
+        .fa-circle-xmark {
+            position: relative;
+            top: 0.4%;
+            left: 90%;
+            display: inline-block;
+            font-size: x-large;
+            cursor: pointer;
+        }
+        .fa-circle-xmark:active {
+            filter: invert(1);
+        }
+    }
+}

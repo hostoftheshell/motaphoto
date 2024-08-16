@@ -1,0 +1,76 @@
+:root {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+// Font-face declarations
+@font-face {
+    font-family: 'Space Mono';
+    src: url('../fonts/SpaceMono-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('../fonts/SpaceMono-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('../fonts/SpaceMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    src: url('../fonts/SpaceMono-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/poppins-latin-300-normal.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/poppins-latin-500-normal.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+h1 {
+    font-family: "Space Mono";
+    font-size: 96px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: "Space Mono";
+    font-size: 66px;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 58px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-family: "Space Mono";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
