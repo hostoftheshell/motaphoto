@@ -6,46 +6,47 @@
     height: 5rem;
     background: #FFF;
     box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+}
 
-    .logo-menu-wrapper {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 100%;
-        background: #FFF;
+#masthead .logo-menu-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    background: #FFF;
+}
 
-        .logo-container {
-            padding-left: clamp(1rem, 5vw + 2rem, 9.125rem);
+#masthead .logo-menu-wrapper .logo-container {
+    padding-left: clamp(1rem, 5vw + 2rem, 9.125rem);
+}
 
-            img {
-                width: clamp(8.625rem, 10vw + 5rem, 13.5rem);
-            }
-        }
-    }
+#masthead .logo-menu-wrapper .logo-container img {
+    height: auto;
+    width: 13.5rem;
 }
 
 /* Primary Navigation Styles */
 #primary-navigation {
     display: flex;
+}
 
-    .main-menu {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding-right: clamp(1rem, 5vw + 2rem, 9.125rem);
-        gap: 2.8125rem;
+#primary-navigation .main-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-right: clamp(1rem, 5vw + 2rem, 9.125rem);
+    gap: 2.8125rem;
+}
 
-        li a {
-            text-decoration: none;
-            color: var(--color-main-text);
+#primary-navigation .main-menu li a {
+    text-decoration: none;
+    color: var(--color-main-text);
+}
 
-            &:hover {
-                font-weight: bold;
-                text-decoration: none;
-            }
-        }
-    }
+#primary-navigation .main-menu li a:hover {
+    font-weight: bold;
+    text-decoration: none;
 }
 
 /* Menu Button Styles */
@@ -61,34 +62,37 @@
     background: transparent;
     border: none;
     cursor: pointer;
+}
 
-    &--line,
-    &--line::before,
-    &--line::after {
-        content: "";
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 2px;
-        border-radius: 1px;
-        background-color: #000;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
+.menu__button--line,
+.menu__button--line::before,
+.menu__button--line::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #000;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-    &--line::before {
-        top: -9.4px;
-    }
+.menu__button--line::before {
+    top: -9.4px;
+}
 
-    &--line::after {
-        top: 9.4px;
-    }
+.menu__button--line::after {
+    top: 9.4px;
 }
 
 /* Media Queries */
 @media (max-width: $breakpoint__tablet) {
+    #masthead .logo-menu-wrapper .logo-container img {
+        width: 8.625rem;
+    }
+
     #primary-navigation {
         display: none;
-        
 
         &.menu-active {
             display: flex;
@@ -99,8 +103,6 @@
             height: 100vh;
             background-color: var(--color-modal-bg);
             justify-content: center;
-            
-            
 
             .main-menu {
                 flex-direction: column;
@@ -119,33 +121,29 @@
     .menu__button {
         display: flex;
 
-        &.menu-active {
-            .menu__button--line {
-                background-color: transparent !important;
+        &.menu-active .menu__button--line {
+            background-color: transparent !important;
 
-                &::before {
-                    transform: rotate(45deg) translate3d(7px, 4px, 0);
-                }
+            &::before {
+                transform: rotate(45deg) translate3d(7px, 4px, 0);
+            }
 
-                &::after {
-                    transform: rotate(-45deg) translate3d(8px, -6px, 0);
-                }
+            &::after {
+                transform: rotate(-45deg) translate3d(8px, -6px, 0);
             }
         }
     }
 }
 
-/* When menu is active and not closing, apply the openMenu animation */
+/* Animations */
 #primary-navigation.menu-active:not(.menu-closing) {
     animation: openMenu 0.5s ease-out forwards;
 }
 
-/* Apply closeMenu animation when closing */
 .menu-closing {
     animation: closeMenu 0.5s ease-out forwards;
 }
 
-/* Keyframes for the closing animation */
 @keyframes closeMenu {
     from {
         transform: translateY(0);
@@ -156,7 +154,6 @@
         opacity: 0;
     }
 }
-
 
 @keyframes openMenu {
     from {
