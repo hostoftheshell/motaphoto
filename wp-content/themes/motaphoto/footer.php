@@ -7,7 +7,7 @@
  */
 
 ?>
-
+</main>
 <footer id="colophon" class="site-footer">
     <?php
    wp_nav_menu(array(

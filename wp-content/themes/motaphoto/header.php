@@ -47,3 +47,5 @@
                 ?>
             </div>
         </header>
+        <main id="content" class="site-content">
+        <!-- Main content -->

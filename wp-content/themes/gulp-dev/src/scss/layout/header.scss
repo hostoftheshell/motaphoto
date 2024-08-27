@@ -1,8 +1,8 @@
 /* Masthead Styles */
 #masthead {
-    position: sticky;
+    position: relative;
     top: 0;
-    z-index: 1000;
+    z-index: 1;
     height: 5rem;
     background: #FFF;
     box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
@@ -41,7 +41,9 @@
 
 #primary-navigation .main-menu li a {
     text-decoration: none;
+    text-transform: uppercase;
     color: var(--color-main-text);
+    transition: font-weight 0.3s ease;
 }
 
 #primary-navigation .main-menu li a:hover {
@@ -87,6 +89,10 @@
 
 /* Media Queries */
 @media (max-width: $breakpoint__tablet) {
+    #masthead {
+        position: sticky;
+    
+    }
     #masthead .logo-menu-wrapper .logo-container img {
         width: 8.625rem;
     }
@@ -114,6 +120,10 @@
                     font-size: 2.75rem;
                     color: var(--color-modal-text);
                 }
+                li a:hover {
+                    font-weight: normal;
+                    text-decoration: none;
+                }
             }
         }
     }
@@ -136,32 +146,34 @@
 }
 
 /* Animations */
-#primary-navigation.menu-active:not(.menu-closing) {
-    animation: openMenu 0.5s ease-out forwards;
-}
+// #primary-navigation.menu-active:not(.menu-closing) {
+//     animation: openMenu 0.8s ease-out forwards;
+// }
 
 .menu-closing {
     animation: closeMenu 0.5s ease-out forwards;
 }
 
+/* Animation for closing the menu (moves from left to right) */
 @keyframes closeMenu {
     from {
-        transform: translateY(0);
-        opacity: 1;
+        transform: translateX(0);
     }
     to {
-        transform: translateY(100%);
-        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+/* Animation for opening the menu (moves from right to left) */
+@keyframes openMenu {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
     }
 }
 
-@keyframes openMenu {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.nav-active {
+     animation: openMenu 0.8s ease-out forwards;
 }
+

@@ -53,19 +53,37 @@ function motaphoto_setup() {
 
 add_action('after_setup_theme', 'motaphoto_setup');
 
-// Add a custom contact button to the primary menu
+// Function to generate the contact button HTML
+function get_contact_button_html($in_nav_menu = false) {
+    // Allow button text to be filtered
+    $button_text = apply_filters('contact_btn_text', 'Contact');
+
+    // Determine the appropriate class based on the context
+    $button_class = $in_nav_menu ? 'menu-contact__btn' : 'contact-btn'; // Default class
+    if (is_single() && !$in_nav_menu) {
+        $button_class = 'single-contact__btn';
+    }
+
+    // Build the contact button HTML
+    $contact_button = sprintf(
+        '<a href="#" class="%s" id="contact-popup">%s</a>',
+        esc_html($button_class),
+        esc_html($button_text)
+    );
+
+    return $contact_button;
+}
+
+// Add the contact button to the primary menu
 function contact_btn( $items, $args ) {
     // Check if we are targeting a specific menu location (optional)
     if ( 'primary_menu' === $args->theme_location ) {
-        // Allow button text to be filtered
-        $button_text = apply_filters( 'contact_btn_text', 'Contact' );
-        
-        // Build the contact button HTML
+        // Wrap the button in a <li> element for the menu
         $contact_button = sprintf(
-            '<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#" class="contact-btn" id="contact-popup">%s</a></li>',
-            esc_html( $button_text )
+            '<li class="menu-item menu-item-type-custom menu-item-object-custom">%s</li>',
+            get_contact_button_html(true)
         );
-        
+
         // Append the contact button to the existing menu items
         $items .= $contact_button;
     }
@@ -76,21 +94,38 @@ add_filter( 'wp_nav_menu_items', 'contact_btn', 10, 2 );
 
 // Optional: Add a filter hook for the button text
 function custom_contact_button_text( $text ) {
-    return strtoupper('contact');
+    return ucfirst(strtolower($text));
 }
 add_filter( 'contact_btn_text', 'custom_contact_button_text' );
 
-// Create a shortcode to get the reference value
-function motaphoto_get_reference_value_shortcode() {
-    return "hello";
+
+// Function to retrieve the 'reference' custom field value
+function motaphoto_get_reference_value() {
+    global $post;
+
+    // Get the 'reference' custom field value for the current post
+    $reference = get_post_meta($post->ID, 'reference', true);
+
+    // Check if the reference value is empty
+    if (!empty($reference)) {
+        return esc_html($reference); // Return the sanitized reference value
+    } else {
+        return 'Reference non spécifiée'; // Return a fallback message if empty
+    }
 }
-add_shortcode('motaphoto_reference_value', 'motaphoto_get_reference_value_shortcode');
+
+// Shortcode to display the 'reference' custom field value
+function motaphoto_get_reference_value_shortcode() {
+    return motaphoto_get_reference_value();
+}
+add_shortcode('motaphoto_reference', 'motaphoto_get_reference_value_shortcode');
+
 
 // Insert dynamic value into the photo references field
 add_filter('wpcf7_form_elements', 'insert_dynamic_value_into_photo_references');
 function insert_dynamic_value_into_photo_references($content) {
     // Get the dynamic content from the shortcode
-    $photo_references_value = do_shortcode('[motaphoto_reference_value]');
+    $photo_references_value = do_shortcode('[motaphoto_reference]');
     
     // Pattern to find the specific input field
     $pattern = '/(<input [^>]*id="photo-references"[^>]* value=")([^"]*)("[^>]*>)/';
@@ -143,8 +178,10 @@ function motaphoto_init() {
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
         'menu_position' => 4,
         'menu_icon' => 'dashicons-camera',
-        'rewrite' => array('slug' => 'photo'),
+        'rewrite' => array('slug' => 'photo', 'with_front' => false),
         'show_in_rest' => true,
+        'publicly_queryable' => true,
+        'query_var' => true,
     ));
 }
 add_action('init', 'motaphoto_init');
@@ -176,7 +213,7 @@ add_action('manage_photography_posts_custom_column', function($column, $postId){
             break;
         
         case 'category':
-            $terms = get_the_terms($postId, 'categorie');
+            $terms = get_the_terms($postId, 'motaphoto-category');
             if ($terms && !is_wp_error($terms)) {
                 $term_names = wp_list_pluck($terms, 'name');
                 echo esc_html(join(', ', $term_names));

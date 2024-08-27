@@ -1,40 +1,53 @@
-// Fonction d'animation pour l'ouverture du menu de navigation principale sur tablette et mobile
 document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.querySelector('.menu__button'); // Sélectionne le bouton du menu
-    const menuContent = document.querySelector('#primary-navigation'); // Sélectionne le contenu du menu
-    const menuLinks = document.querySelectorAll('#primary-navigation .main-menu .menu-item'); // Sélectionne tous les liens du menu
-    console.log(menuLinks);
+    const mainContainer = document.querySelector('.main-container');
+    const siteHeader = document.querySelector('.site-header');
+    const menuButton = document.querySelector('.menu__button'); // Selects the menu button
+    const menuContent = document.querySelector('#primary-navigation'); // Selects the menu content
+    const menuLinks = document.querySelectorAll('#primary-navigation .main-menu .menu-item'); // Selects all menu links
+
     function toggleMenu() {
-        // Vérifie si le menu est actuellement ouvert
         const isOpen = menuContent.classList.contains('menu-active');
 
         if (isOpen) {
-            
-            // Ajoute la classe 'menu-closing' pour déclencher l'animation de fermeture
+            // Trigger the closing animation
             menuContent.classList.add('menu-closing');
-            // Retire 'menu-active' après la fin de l'animation
+
+            // Once the closing animation starts, remove the overlay
+            menuContent.addEventListener('animationstart', function () {
+                mainContainer.classList.remove('overlay-active');
+            }, { once: true });
+
+            // After the animation ends, clean up classes
             menuContent.addEventListener('animationend', function () {
                 menuContent.classList.remove('menu-active');
                 menuContent.classList.remove('menu-closing');
-
+                siteHeader.classList.remove('nav-active');
                 
             }, { once: true });
+
         } else {
-            // Ajoute 'menu-active' pour ouvrir le menu
+            // Add the overlay first
+            mainContainer.classList.add('overlay-active');
+
+            // Trigger the opening animation
             menuContent.classList.add('menu-active');
+            siteHeader.classList.add('nav-active');
+            // Optionally, you can clean up or add additional actions after the opening animation ends
+            siteHeader.addEventListener('animationend', function () {
+                mainContainer.classList.remove('overlay-active');
+            }, { once: true });
         }
 
-        // Bascule la classe 'menu-active' sur le bouton
+        // Toggle the 'menu-active' class on the menu button
         menuButton.classList.toggle('menu-active');
     }
 
-    // Attache l'événement de clic au bouton du menu
+    // Attach the toggleMenu function to the menu button click event
     menuButton.addEventListener('click', toggleMenu);
 
-    // Attache l'événement de clic à chaque lien du menu pour fermer le menu lorsqu'un lien est cliqué
+    // Attach the toggleMenu function to each menu link to close the menu when a link is clicked
     menuLinks.forEach(function (link) {
         link.addEventListener('click', function () {
-            // Ferme le menu seulement s'il est actuellement ouvert
             if (menuContent.classList.contains('menu-active')) {
                 toggleMenu();
             }
@@ -43,9 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 // Fonction d'animation pour l'ouverture du formulaire de contact
 document.addEventListener('DOMContentLoaded', () => {
-    const contactButton = document.querySelector('.contact-btn');
+    const contactButtons = document.querySelectorAll('.single-contact__btn, .menu-contact__btn'); // Select all contact buttons
     const contactOverlay = document.querySelector('.contact-overlay');
     const closeButton = document.querySelector('.close-btn');
     
@@ -65,21 +79,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Event listener for the contact button to open the overlay
-    contactButton.addEventListener('click', toggleContactOverlay);
-    closeButton.addEventListener('click', toggleContactOverlay );
+    // Event listener for each contact button to open the overlay
+    contactButtons.forEach(button => {
+        button.addEventListener('click', toggleContactOverlay);
+    });
+
+    // Event listener for the close button to close the overlay
+    closeButton.addEventListener('click', toggleContactOverlay);
+
     // Optional: Close the overlay when clicking outside of it
     contactOverlay.addEventListener('click', (event) => {
         if (event.target === contactOverlay) {
             toggleContactOverlay();
         }
     });
-     // Event listener for form submission using wpcf7 events
+
+    // Event listener for form submission using wpcf7 events
     document.addEventListener('wpcf7mailsent', function () {
         // Delay the closing of the overlay by 2 seconds (2000 milliseconds)
         setTimeout(toggleContactOverlay, 1000); 
     }, false);
 });
+
 
 
 
@@ -91,6 +112,36 @@ document.addEventListener('DOMContentLoaded', () => {
             if (node.nodeType === Node.TEXT_NODE && !node.nodeValue.trim()) {
                 node.remove();
             }
+        });
+    });
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('a[data-thumbnail]');
+    const previewContainer = document.querySelector('.post-thumbnail-preview');
+    const preview = previewContainer.querySelector('img');
+
+    // Initialize preview container styles
+    previewContainer.style.opacity = '0';          // Start as invisible
+    previewContainer.style.visibility = 'hidden';  // Hidden by default
+    previewContainer.style.transition = 'opacity 0.3s ease'; // Smooth fade-in/out
+
+    links.forEach(link => {
+        link.addEventListener('mouseover', function () {
+            const thumbnailUrl = this.getAttribute('data-thumbnail');
+            preview.src = thumbnailUrl;
+            previewContainer.style.opacity = '1';      // Fade in the preview
+            previewContainer.style.visibility = 'visible'; // Make it visible
+        });
+
+        link.addEventListener('mouseout', function () {
+            previewContainer.style.opacity = '0';      // Fade out the preview
+            previewContainer.style.visibility = 'hidden'; // Hide it after fade out
         });
     });
 });

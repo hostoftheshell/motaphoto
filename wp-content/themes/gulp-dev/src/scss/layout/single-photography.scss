@@ -1,0 +1,270 @@
+.single-entry {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 38px;
+    gap: 20px;
+
+    &-data,
+    &-media {
+        flex: 1;
+        box-sizing: border-box;
+    }
+
+    &-data {
+        margin-left: clamp(1rem, 5vw + 2rem, 9.125rem);
+        align-self: flex-end;
+        padding-bottom: 2.25rem;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid var(--color-main-text);
+        max-width: 50%;
+
+        &__title,
+        &__meta {
+            max-width: 26.25rem;
+        }
+
+        &__title {
+            margin-bottom: 1.25rem;
+        }
+
+        &__meta {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 1.4px;
+        }
+    }
+
+    &-media {
+        margin-right: clamp(1rem, 5vw + 2rem, 9.125rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        img {
+            max-width: 35.188rem;
+            /* Maximum width for the image */
+            width: 100%;
+            /* Allows the image to scale down responsively */
+            height: auto;
+            /* Maintains the aspect ratio */
+            object-fit: cover;
+            /* Ensures the image covers the area if needed */
+        }
+    }
+}
+
+.single-contact {
+    height: 7.375rem;
+    margin-left: clamp(1rem, 5vw + 2rem, 9.125rem);
+    margin-right: clamp(1rem, 5vw + 2rem, 9.125rem);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-main-text);
+    gap: 20px;
+
+    &__btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 15.125rem;
+        height: 2.125rem;
+        padding: 0.5rem 0.938rem;
+        background-color: var(--color-button-primary-bg);
+        color: var(--color-main-text);
+        font-size: 12px;
+        text-decoration: none;
+        transition: background-color 0.8s ease, color 0.8s ease;
+        border-radius: 2px;
+        box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+    }
+
+    &__btn:hover {
+        background-color: var(--color-button-hover-bg);
+        color: var(--color-button-hover-text);
+        font-weight: 700;
+    }
+
+    &__CTA {
+        width: 49%;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        align-items: center;
+        font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+    }
+}
+
+.single-navigation {
+    margin-left: auto;
+
+    .single-navigation__arrow-container {
+        display: flex;
+        gap: 30px;
+    }
+
+    .post-thumbnail-preview {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.8s ease;
+
+        img {
+            width: 5.063rem;
+            height: 4.438rem;
+            object-fit: cover;
+        }
+    }
+}
+
+.single-related-photos {
+    /* Adjust margins to be more responsive */
+    margin-left: clamp(1rem, 5vw + 2rem, 9.125rem);
+    margin-right: clamp(1rem, 5vw + 2rem, 9.125rem);
+    margin-top: 5.313rem;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        /* Allow items to wrap on smaller screens */
+        padding-top: 3.25rem;
+        gap: 20px;
+    }
+
+    &__media {
+        margin-bottom: 6.813rem;
+        flex: 1 1 calc(50% - 20px);
+        /* Media items take up half the container's width */
+        min-width: 300px;
+        /* Prevent items from becoming too narrow */
+        max-width: 585px;
+        /* Max width for the container */
+        aspect-ratio: 585 / 513;
+        /* Maintains the aspect ratio */
+
+        img {
+            width: 100%;
+            /* Image adapts to the container width */
+            height: 100%;
+            /* Image fills the container height */
+            object-fit: cover;
+            /* Ensures the image covers the entire container, cropping if necessary */
+            max-width: 585px;
+            /* Ensure the image does not exceed the max width */
+            max-height: 513px;
+            /* Ensure the image does not exceed the max height */
+        }
+    }
+}
+
+
+@media (max-width: $breakpoint__tablet) {
+    
+    
+    .single-entry {
+        flex-direction: column-reverse;
+        padding-top: 20px;
+        width: 100%;
+        border-bottom: 1px solid var(--color-main-text);
+        &-media {
+            margin-right: clamp(1rem,5vw + 2rem,3.375rem);
+            margin-left: clamp(1rem,5vw + 2rem,3.375rem);
+            img {
+                max-width: unset;
+            }
+        }
+        &-data {
+            margin-right: clamp(1rem,5vw + 2rem,3.375rem);
+            margin-left: clamp(1rem,5vw + 2rem,3.375rem);
+            align-self: flex-start;
+            border-bottom: none;
+            max-width: unset;
+            &__title {
+                margin-top: 0;
+                font-size: 46px;
+            }
+        }
+}
+    
+
+
+
+
+    .single-contact {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        height: auto;
+        &__btn {
+            width: 14.563rem;
+            margin: 0 auto; // Center the button horizontally
+            margin-bottom: 1.438rem;
+        }
+
+        &__CTA {
+            display: flex;
+            flex-direction: column;
+            width: auto; // Allow the CTA to take the space it needs
+            margin: 0 auto; // Center the CTA horizontally
+            gap: unset;
+
+            p {
+                align-self: flex-start; // Align the paragraph text to the start (left)
+            }
+        }
+    }
+
+    .single-navigation {
+        display: none;
+    }
+
+    .single-related-photos {
+        margin-top: 1.5rem;
+
+        &__title {
+            text-align: center;
+        }
+
+        &__container {
+            padding-top: 0.125rem;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+
+        &__media {
+            margin-bottom: 0rem;
+            min-width: unset;
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                aspect-ratio: 585 / 513; // Maintain the aspect ratio
+            }
+        }
+
+        &__media:last-child {
+            margin-bottom: 1.313rem;
+        }
+    }
+}
+
+@media (max-width: $breakpoint__large_phone) {
+
+    .single-related-photos__media img {
+        aspect-ratio: 585 / 513; // Maintain aspect ratio for images on large phone screens
+    }
+}
