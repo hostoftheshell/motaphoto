@@ -1,9 +1,12 @@
-.single-entry {
+/* ==========================================================================
+   SINGLE ENTRY STYLES
+   ========================================================================== */
+   .single-entry {
     display: flex;
     justify-content: space-between;
     padding-top: 38px;
     gap: 20px;
-
+    
     &-data,
     &-media {
         flex: 1;
@@ -18,11 +21,6 @@
         flex-direction: column;
         border-bottom: 1px solid var(--color-main-text);
         max-width: 50%;
-
-        &__title,
-        &__meta {
-            max-width: 26.25rem;
-        }
 
         &__title {
             margin-bottom: 1.25rem;
@@ -52,17 +50,16 @@
 
         img {
             max-width: 35.188rem;
-            /* Maximum width for the image */
             width: 100%;
-            /* Allows the image to scale down responsively */
             height: auto;
-            /* Maintains the aspect ratio */
             object-fit: cover;
-            /* Ensures the image covers the area if needed */
         }
     }
 }
 
+/* ==========================================================================
+   SINGLE CONTACT STYLES
+   ========================================================================== */
 .single-contact {
     height: 7.375rem;
     margin-left: clamp(1rem, 5vw + 2rem, 9.125rem);
@@ -101,13 +98,15 @@
         justify-content: space-between;
         align-items: center;
         font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 300;
-line-height: normal;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: normal;
     }
 }
 
+/* ==========================================================================
+   SINGLE NAVIGATION STYLES
+   ========================================================================== */
 .single-navigation {
     margin-left: auto;
 
@@ -129,8 +128,10 @@ line-height: normal;
     }
 }
 
+/* ==========================================================================
+   SINGLE RELATED PHOTOS STYLES
+   ========================================================================== */
 .single-related-photos {
-    /* Adjust margins to be more responsive */
     margin-left: clamp(1rem, 5vw + 2rem, 9.125rem);
     margin-right: clamp(1rem, 5vw + 2rem, 9.125rem);
     margin-top: 5.313rem;
@@ -139,7 +140,6 @@ line-height: normal;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        /* Allow items to wrap on smaller screens */
         padding-top: 3.25rem;
         gap: 20px;
     }
@@ -147,89 +147,80 @@ line-height: normal;
     &__media {
         margin-bottom: 6.813rem;
         flex: 1 1 calc(50% - 20px);
-        /* Media items take up half the container's width */
         min-width: 300px;
-        /* Prevent items from becoming too narrow */
         max-width: 580px;
-        /* Max width for the container */
         aspect-ratio: 585 / 513;
-        /* Maintains the aspect ratio */
         position: relative;
 
         img {
             width: 100%;
-            /* Image adapts to the container width */
             height: 100%;
-            /* Image fills the container height */
             object-fit: cover;
-            /* Ensures the image covers the entire container, cropping if necessary */
             max-width: 585px;
-            /* Ensure the image does not exceed the max width */
             max-height: 513px;
-            /* Ensure the image does not exceed the max height */
         }
     }
+
     &__media:hover .photo-overlay {
-        
-            opacity: 1; /* Show overlay on hover */
-            visibility: visible; /* Make sure it's interactable */
-        
+        opacity: 1;
+        visibility: visible;
     }
 }
 
-
+/* ==========================================================================
+   RESPONSIVE STYLES FOR TABLETS AND LARGE PHONES
+   ========================================================================== */
 @media (max-width: $breakpoint__tablet) {
-    
-    
     .single-entry {
         flex-direction: column-reverse;
         padding-top: 20px;
         width: 100%;
         border-bottom: 1px solid var(--color-main-text);
+
         &-media {
-            margin-right: clamp(1rem,5vw + 2rem,3.375rem);
-            margin-left: clamp(1rem,5vw + 2rem,3.375rem);
+            margin-right: clamp(1rem, 5vw + 2rem, 3.375rem);
+            margin-left: clamp(1rem, 5vw + 2rem, 3.375rem);
+
             img {
                 max-width: unset;
             }
         }
+
         &-data {
-            margin-right: clamp(1rem,5vw + 2rem,3.375rem);
-            margin-left: clamp(1rem,5vw + 2rem,3.375rem);
+            margin-right: clamp(1rem, 5vw + 2rem, 3.375rem);
+            margin-left: clamp(1rem, 5vw + 2rem, 3.375rem);
             align-self: flex-start;
             border-bottom: none;
             max-width: unset;
+
             &__title {
                 margin-top: 0;
                 font-size: 46px;
             }
         }
-}
-    
-
-
-
+    }
 
     .single-contact {
         margin-left: 0;
         margin-right: 0;
         width: 100%;
         height: auto;
+
         &__btn {
             width: 14.563rem;
-            margin: 0 auto; // Center the button horizontally
+            margin: 0 auto;
             margin-bottom: 1.438rem;
         }
 
         &__CTA {
             display: flex;
             flex-direction: column;
-            width: auto; // Allow the CTA to take the space it needs
-            margin: 0 auto; // Center the CTA horizontally
+            width: auto;
+            margin: 0 auto;
             gap: unset;
 
             p {
-                align-self: flex-start; // Align the paragraph text to the start (left)
+                align-self: flex-start;
             }
         }
     }
@@ -259,7 +250,7 @@ line-height: normal;
                 width: 100%;
                 height: auto;
                 object-fit: cover;
-                aspect-ratio: 585 / 513; // Maintain the aspect ratio
+                aspect-ratio: 585 / 513;
             }
         }
 
@@ -270,8 +261,7 @@ line-height: normal;
 }
 
 @media (max-width: $breakpoint__large_phone) {
-
     .single-related-photos__media img {
-        aspect-ratio: 585 / 513; // Maintain aspect ratio for images on large phone screens
+        aspect-ratio: 585 / 513;
     }
 }

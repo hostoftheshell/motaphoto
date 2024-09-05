@@ -1,4 +1,6 @@
-/* Overlay Contact */
+/* ==========================================================================
+   Contact Overlay
+   ========================================================================== */
 .contact-overlay {
     position: fixed;
     inset: 0;
@@ -38,9 +40,12 @@
         }
 
     }
+
 }
 
-/* Contact Form 7 */
+/* ==========================================================================
+   Contact Form 7
+   ========================================================================== */
 .wpcf7-form {
     display: flex;
     flex-direction: column;
@@ -76,7 +81,6 @@
 
 form.wpcf7-form input[type="text"],
 form.wpcf7-form input[type="email"] {
-    /* Your styles here */
     margin-top: 3px;
     font-family: Poppins;
     font-size: 0.75rem;
@@ -109,8 +113,6 @@ form.wpcf7-form input[type="email"] {
     border-radius: 0px;
     background-color: var(--color-button-primary-bg);
 }
-
-
 
 .hidden {
     display: none;
@@ -149,6 +151,9 @@ form.wpcf7-form input[type="email"] {
 }
 
 
+/* ========================================================================== */
+/* Media Queries - CONTACT OVERLAY
+========================================================================== */
 @media (max-width: $breakpoint__tablet) {
     .contact-overlay__container {
         width: 286px;

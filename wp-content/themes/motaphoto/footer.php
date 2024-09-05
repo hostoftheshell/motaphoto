@@ -9,7 +9,7 @@
 
 ?>
 </main>
-<footer id="colophon" class="site-footer">
+<footer id="colophon" class="site-footer" itemscope itemtype="http://schema.org/WPFooter">
     <?php
     wp_nav_menu(array(
         'theme_location'  => 'footer_menu',

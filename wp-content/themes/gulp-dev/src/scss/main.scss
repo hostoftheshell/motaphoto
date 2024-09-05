@@ -1,9 +1,13 @@
+// ==========================================================================
 // Importation des styles abstraits
-@import './base/variables/typography';
-@import './base/variables/colors';
-@import './base/variables/breakpoint';
+// ==========================================================================
+@import './variables/typography';
+@import './variables/colors';
+@import './variables/breakpoint';
 
+// ==========================================================================
 // Importation des styles de mise en page
+// ==========================================================================
 @import './layout/global';
 @import './layout/header';
 @import './layout/hero-banner';

@@ -1,4 +1,7 @@
-.photo-overlay {
+/* ==========================================================================
+   PHOTO OVERLAY STYLES
+   ========================================================================== */
+   .photo-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -13,38 +16,48 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    
-    &__top {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        padding-top: 11px;
-        padding-right: 18px;
-        box-sizing: border-box;
-    }
-
-    &__center {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    &__bottom {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        color: #fff;
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: 500;
-    }
-
-    &__info {
-        color: #fff;
-        padding: 12px 17px;
-        box-sizing: border-box;
-
-    }
 }
 
+/* ==========================================================================
+   TOP SECTION STYLES
+   ========================================================================== */
+.photo-overlay__top {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 11px;
+    padding-right: 18px;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   CENTER SECTION STYLES
+   ========================================================================== */
+.photo-overlay__center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==========================================================================
+   BOTTOM SECTION STYLES
+   ========================================================================== */
+.photo-overlay__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   INFO SECTION STYLES
+   ========================================================================== */
+.photo-overlay__info {
+    color: #fff;
+    padding: 12px 17px;
+    box-sizing: border-box;
+}

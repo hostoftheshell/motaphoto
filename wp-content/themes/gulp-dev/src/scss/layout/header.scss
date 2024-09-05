@@ -1,5 +1,7 @@
-/* Masthead Styles */
-#masthead {
+/* ==========================================================================
+   MASTHEAD STYLES
+   ========================================================================== */
+   #masthead {
     position: relative;
     top: 0;
     z-index: 1;
@@ -26,7 +28,9 @@
     width: 13.5rem;
 }
 
-/* Primary Navigation Styles */
+/* ==========================================================================
+   PRIMARY NAVIGATION STYLES
+   ========================================================================== */
 #primary-navigation {
     display: flex;
 }
@@ -51,7 +55,9 @@
     text-decoration: none;
 }
 
-/* Menu Button Styles */
+/* ==========================================================================
+   MENU BUTTON STYLES
+   ========================================================================== */
 .menu__button {
     position: absolute;
     right: 40.6px;
@@ -87,12 +93,43 @@
     top: 9.4px;
 }
 
-/* Media Queries */
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+@keyframes openMenu {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes closeMenu {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.nav-active {
+     animation: openMenu 0.8s ease-out forwards;
+}
+
+.menu-closing {
+    animation: closeMenu 0.5s ease-out forwards;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES - MASTHEAD
+   ========================================================================== */
 @media (max-width: $breakpoint__tablet) {
     #masthead {
         position: sticky;
-    
     }
+
     #masthead .logo-menu-wrapper .logo-container img {
         width: 8.625rem;
     }
@@ -120,6 +157,7 @@
                     font-size: 2.75rem;
                     color: var(--color-modal-text);
                 }
+
                 li a:hover {
                     font-weight: normal;
                     text-decoration: none;
@@ -144,36 +182,3 @@
         }
     }
 }
-
-/* Animations */
-// #primary-navigation.menu-active:not(.menu-closing) {
-//     animation: openMenu 0.8s ease-out forwards;
-// }
-
-.menu-closing {
-    animation: closeMenu 0.5s ease-out forwards;
-}
-
-/* Animation for closing the menu (moves from left to right) */
-@keyframes closeMenu {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(100%);
-    }
-}
-/* Animation for opening the menu (moves from right to left) */
-@keyframes openMenu {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-.nav-active {
-     animation: openMenu 0.8s ease-out forwards;
-}
-

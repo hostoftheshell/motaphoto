@@ -1,4 +1,7 @@
-.photo-catalog {
+/* ==========================================================================
+   PHOTO CATALOG STYLES
+   ========================================================================== */
+   .photo-catalog {
     margin-left: clamp(1rem, 5vw + 2rem, 9.125rem);
     margin-right: clamp(1rem, 5vw + 2rem, 9.125rem);
     display: flex;
@@ -7,7 +10,9 @@
     padding-top: 3.25rem;
     gap: 20px;
 
-
+    /* ==========================================================================
+       MEDIA STYLES
+       ========================================================================== */
     &__media {
         flex: 1 1 calc(50% - 20px);
         min-width: 404px;
@@ -28,17 +33,21 @@
 
     &__media:hover .photo-overlay {
         opacity: 1;
-        /* Show overlay on hover */
-        visibility: visible;
-        /* Make sure it's interactable */
+        visibility: visible; /* Show overlay on hover */
     }
 }
 
+/* ==========================================================================
+   SPECIAL CASES
+   ========================================================================== */
 .photo-catalog__media:nth-last-child(1):nth-child(odd) {
     flex: 0 0 49%;
     margin-right: auto;
 }
 
+/* ==========================================================================
+   LOAD MORE BUTTON STYLES
+   ========================================================================== */
 #load-more-container {
     #load-more {
         display: block;
@@ -63,12 +72,14 @@
     }
 }
 
+/* ==========================================================================
+   MEDIA QUERIES
+   ========================================================================== */
 @media (max-width: $breakpoint__laptop) {
     .photo-catalog {
         padding-top: 0;
         justify-content: center;
     }
-   
 }
 
 @media (max-width: $breakpoint__large_phone) {
@@ -78,20 +89,16 @@
         justify-content: center;
 
         &__media {
-            flex: 1 1 calc(100% - 2rem);
-            /* Ensure single column layout */
+            flex: 1 1 calc(100% - 2rem); /* Single column layout */
             min-width: 300px;
             max-width: 100%;
         }
     }
 }
 
-
-
 @media (max-width: 992px) {
     .photo-catalog__media:nth-last-child(1):nth-child(odd) {
         flex: 1 1 calc(50% - 20px);
         margin-right: unset;
-        
     }
 }

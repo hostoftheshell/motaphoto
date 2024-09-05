@@ -1,4 +1,7 @@
-#filter-form {
+/* ==========================================================================
+   FILTER FORM STYLES
+   ========================================================================== */
+   #filter-form {
     margin-top: 80px;
     margin-left: clamp(1rem, 5vw + 2rem, 9.125rem);
     margin-right: clamp(1rem, 5vw + 2rem, 9.125rem);
@@ -6,24 +9,9 @@
     justify-content: space-between;
 }
 
-#filter-form .select2-selection--single {
-    display: flex;
-    align-items: center;
-    width: 16.25rem;
-    height: 2.688rem;
-    padding-right: 18px;
-    border-radius: 8px;
-    background-color: transparent;
-    border: 1.3px solid transparent;
-    font-family: Poppins, sans-serif;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    text-transform: uppercase;
-    line-height: 18px;
-    letter-spacing: 0.36px;
-}
-
+/* ==========================================================================
+   SELECT2 CONTAINER STYLES
+   ========================================================================== */
 .select2-container {
     border-radius: 8px;
     border: 1.3px solid var(--Blues-Gray2);
@@ -49,6 +37,27 @@
     justify-content: flex-end;
 }
 
+/* ==========================================================================
+   SELECT2 SELECTION STYLES
+   ========================================================================== */
+#filter-form .select2-selection--single {
+    display: flex;
+    align-items: center;
+    width: 16.25rem;
+    height: 2.688rem;
+    padding-right: 18px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 1.3px solid transparent;
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 18px;
+    letter-spacing: 0.36px;
+}
+
 #filter-form .select2-selection__rendered {
     position: absolute;
     top: 50%;
@@ -56,10 +65,9 @@
     padding-left: 18px;
 }
 
-.select2-container--open .select2-selection__arrow {
-    transform: rotate(180deg) !important;
-}
-
+/* ==========================================================================
+   ARROW ICON STYLES
+   ========================================================================== */
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     display: inline-block;
     width: 35px !important;
@@ -85,6 +93,13 @@
     left: auto !important;
 }
 
+.select2-container--open .select2-selection__arrow {
+    transform: rotate(180deg) !important;
+}
+
+/* ==========================================================================
+   SELECT2 OPEN AND SEARCH FIELD STYLES
+   ========================================================================== */
 .select2-search__field {
     display: none;
 }
@@ -94,8 +109,7 @@
 }
 
 .select2-container--open .select2-dropdown--below,
-.select2-container--open .select2-dropdown--above
-{
+.select2-container--open .select2-dropdown--above {
     font-family: Poppins, sans-serif;
     font-style: normal !important;
     font-weight: 500;
@@ -103,6 +117,12 @@
     border: none !important;
 }
 
+/* ==========================================================================
+   SELECT2 RESULT STYLES
+   ========================================================================== */
+.select2-results__option {
+    padding: 10px !important;
+}
 .select2-results__option--highlighted:active {
     background-color: var(--color-form-bg-active) !important;
 }
@@ -117,8 +137,9 @@
     color: #fff !important;
 }
 
-/* Responsive Styles */
-
+/* ==========================================================================
+   RESPONSIVE STYLES
+   ========================================================================== */
 @media (max-width: $breakpoint__laptop) {
     #filter-form {
         flex-direction: column;
@@ -137,8 +158,5 @@
     .select2-container:nth-child(6) {
         display: block;
         justify-content: unset;
-    }
-    .select2-container--open {
-        border: solid 1px #215aff !important;
     }
 }
