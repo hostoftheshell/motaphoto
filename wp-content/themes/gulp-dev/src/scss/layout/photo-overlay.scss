@@ -1,0 +1,50 @@
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.60);
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    
+    &__top {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 11px;
+        padding-right: 18px;
+        box-sizing: border-box;
+    }
+
+    &__center {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    &__bottom {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &__info {
+        color: #fff;
+        padding: 12px 17px;
+        box-sizing: border-box;
+
+    }
+}
+

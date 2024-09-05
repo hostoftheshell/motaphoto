@@ -1,0 +1,145 @@
+.lightbox {
+    background-color: rgba(0, 0, 0, 0.80);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    animation: lightboxIn .5s;
+    display: flex;
+    justify-content: center;
+}
+
+.lightbox__next,
+.lightbox__prev {
+    border: none;
+    background-color: transparent;
+    background-image: url('../images/lightbox-arrow-default.svg');
+    background-position: center center;
+    background-size: 27px 16px;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 100%;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
+    cursor: pointer;
+    z-index: 11;
+    transition: background-size 0.3s ease, background-image 0.3s ease, background-color 0.3s ease both;
+    text-align: center;
+    color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.lightbox__prev {
+    left: 9%;
+    right: auto;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.lightbox__next:hover,
+.lightbox__prev:hover {
+    background-image: url('../images/lightbox-arrow-hover.svg');
+    background-size: 36px 16px; /* Adjusting the size for the hover state */
+    background-position: right center; /* Ensure the position stays consistent */
+}
+
+.lightbox__next::before,
+.lightbox__prev::after {
+    color: #FFF;
+    font-family: "Space Mono";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    z-index: 12;
+    display: block;
+}
+.lightbox__next::before {
+    content: "Suivante";
+    left: -60px;
+    
+}
+.lightbox__prev::after {
+    content: "Précédente";
+    transform: rotate(180deg);
+    right: 55px;
+}
+
+.lightbox__next:hover::before,
+.lightbox__prev:hover::after {
+    font-weight: 700; /* Make the text bold on hover */
+}
+
+.lightbox__close {
+    border: none;
+    background-color: transparent;
+    background-image: url('../images/lightbox-btn-close.svg');
+    background-position: center center;
+    background-size: 23px 23px;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 3%;
+    transform: translateY(-50%);
+    right: 6%;
+    cursor: pointer;
+    z-index: 12;
+    transition: background-size 0.3s ease, background-image 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+    color: transparent;
+    display: flex;
+    align-items: center;
+    opacity: .8;
+}
+
+.lightbox__close:hover{
+    opacity: 1;
+}
+
+@keyframes lightboxIn  {
+    from {
+        opacity: 0;
+
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.lightbox__container {
+    align-self: center;
+        img {
+            max-width: 80vw;
+            max-height: 80vh;
+        }
+    
+}
+
+.lightbox__info {
+    display: flex;
+    justify-content: space-between;
+    color: #FFF;
+}
+
+@media(max-width:1440px) {
+    .lightbox__next::before,
+    .lightbox__prev::after {
+        content:"";
+        
+    }
+}
+
+@media(max-width:$breakpoint__tablet) {
+    .lightbox__next::before{
+        right:2%
+    }
+    .lightbox__prev::after{
+        right:1%
+    }
+}

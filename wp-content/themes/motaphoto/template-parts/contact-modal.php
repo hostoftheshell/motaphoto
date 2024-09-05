@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template part for displaying the contact modal
+ * Partie du template pour afficher la fenêtre modale de contact
  *
  * @package motaphoto
  */
@@ -11,7 +11,7 @@
     <i class="fa-regular fa-circle-xmark close-btn"></i>
         <div class="contact-overlay__header">
             <?php
-            $image_src = get_stylesheet_directory_uri() . '/assets/images/contact-headerb.svg';
+            $image_src = get_stylesheet_directory_uri() . '/assets/images/contact-header.svg';
             $alt_text = 'Contact form decorative element';
 
             for ($j = 0; $j < 2; $j++) : ?>
@@ -23,7 +23,6 @@
                 </div>
             <?php endfor; ?>
         </div>
-        
         <div class="contact-overlay__form">
             <?php echo do_shortcode('[contact-form-7 id="1ee3960" title="motaphoto-contact-form"]'); ?>
         </div>

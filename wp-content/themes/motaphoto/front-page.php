@@ -1,14 +1,13 @@
 <?php
 /**
- * Template Name: Accueil
+ * Le modèle pour afficher la page d'accueil.
  *
- * This template is for displaying a contact form.
- *
- * @package YourThemeName
+ * @package thème WordPress motaphoto
  */
 ?>
+
 <?php get_header(); ?>
-<main id="content" class="site-content">
-        <!-- Main content -->
-</main>
-<? get_footer(); ?>
+<?php get_template_part('template-parts/front-page', 'banner'); ?>
+<?php get_template_part('template-parts/front-page', 'filters'); ?>
+<?php get_template_part('template-parts/front-page', 'catalog'); ?>
+<?php get_footer(); ?>

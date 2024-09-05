@@ -150,10 +150,11 @@ line-height: normal;
         /* Media items take up half the container's width */
         min-width: 300px;
         /* Prevent items from becoming too narrow */
-        max-width: 585px;
+        max-width: 580px;
         /* Max width for the container */
         aspect-ratio: 585 / 513;
         /* Maintains the aspect ratio */
+        position: relative;
 
         img {
             width: 100%;
@@ -167,6 +168,12 @@ line-height: normal;
             max-height: 513px;
             /* Ensure the image does not exceed the max height */
         }
+    }
+    &__media:hover .photo-overlay {
+        
+            opacity: 1; /* Show overlay on hover */
+            visibility: visible; /* Make sure it's interactable */
+        
     }
 }
 

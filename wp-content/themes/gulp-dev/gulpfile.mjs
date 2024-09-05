@@ -21,8 +21,16 @@ const paths = {
         dest: '../motaphoto/assets/css'
     },
     scripts: {
-        src: 'src/js/**/*.js',
-        dest: '../motaphoto/assets/js'
+        all: 'src/js/**/*.js',
+        main: 'src/js/main/**/*.js',
+        jquery: 'src/js/jquery/**/*.js',
+        frontPage: 'src/js/front-page/**/*.js',
+        singlePage: 'src/js/single-photography/**/*.js',
+        dest: '../motaphoto/assets/js',
+        mainDest: '../motaphoto/assets/js/main',
+        jqueryDest: '../motaphoto/assets/js/jquery',
+        frontPageDest: '../motaphoto/assets/js/front-page',
+        singlePageDest: '../motaphoto/assets/js/single-photography'
     },
     php: {
         src: '**/*.php'
@@ -44,19 +52,58 @@ function styles() {
         .pipe(browserSync.stream());
 }
 
-// Minify and concatenate JS
-function scripts() {
-    return gulp.src(paths.scripts.src)
+// Minify and concatenate main JS
+function mainScripts() {
+    return gulp.src(paths.scripts.main)
         .pipe(plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }))
         .pipe(sourcemaps.init())
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
-        .pipe(rename({ extname: '.js' }))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(paths.scripts.dest))
+        .pipe(gulp.dest(paths.scripts.mainDest))
         .pipe(browserSync.stream());
 }
+
+// Minify and concatenate jQuery scripts
+function jqueryScripts() {
+    return gulp.src(paths.scripts.jquery)
+        .pipe(plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }))
+        .pipe(sourcemaps.init())
+        .pipe(concat('jquery.js'))
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(paths.scripts.jqueryDest))
+        .pipe(browserSync.stream());
+}
+
+// Minify and concatenate front-page scripts
+function frontPageScripts() {
+    return gulp.src(paths.scripts.frontPage)
+        .pipe(plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }))
+        .pipe(sourcemaps.init())
+        .pipe(concat('front-page.js'))
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(paths.scripts.frontPageDest))
+        .pipe(browserSync.stream());
+}
+
+// Minify and concatenate single-page scripts
+function singlePageScripts() {
+    return gulp.src(paths.scripts.singlePage)
+        .pipe(plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }))
+        .pipe(sourcemaps.init())
+        .pipe(concat('single-photography.js'))
+        .pipe(uglify())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(paths.scripts.singlePageDest))
+        .pipe(browserSync.stream());
+}
+
+// Combine all JavaScript tasks
+const scripts = gulp.series(
+    gulp.parallel(mainScripts, jqueryScripts, frontPageScripts, singlePageScripts)
+);
 
 // Watch files for changes
 function watch() {
@@ -65,7 +112,7 @@ function watch() {
         notify: false
     });
     gulp.watch(paths.styles.srcToWatch, styles);
-    gulp.watch(paths.scripts.src, scripts);
+    gulp.watch(paths.scripts.all, scripts);
     gulp.watch(paths.php.src).on('change', browserSync.reload);
 }
 

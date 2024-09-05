@@ -1,13 +1,10 @@
 <?php
 /**
- * The template for displaying all pages
+ * Le modèle pour afficher toutes les pages
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
+ * Il s'agit du modèle qui affiche toutes les pages par défaut.
  *
- * @package YourThemeName
+ * @package motaphoto
  */
 
 get_header(); ?>

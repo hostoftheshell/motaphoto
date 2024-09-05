@@ -43,6 +43,7 @@ if ($categories && !is_wp_error($categories)) {
 
         // Use the post title as a fallback if the alt text is empty
         $alt_text = !empty($alt_text) ? $alt_text : $post_title;
+        $terms = get_the_terms(get_the_ID(), 'motaphoto-category');
         ?>
         <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr($post_title); ?>">
             <?php 
@@ -53,6 +54,9 @@ if ($categories && !is_wp_error($categories)) {
             )); 
             ?>
         </a>
+        <?php
+        include locate_template('template-parts/photo-overlay.php');
+        ?>
 
 </article>
             <?php

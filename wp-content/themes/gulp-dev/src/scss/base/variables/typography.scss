@@ -49,7 +49,7 @@
 
 h1 {
     font-family: "Space Mono";
-    font-size: 96px;
+    font-size: clamp(27.588px, 5vw + 1rem, 96px);
     font-style: italic;
     font-weight: bold;
     line-height: normal;

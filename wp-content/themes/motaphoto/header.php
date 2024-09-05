@@ -1,3 +1,15 @@
+<?php
+
+/**
+ * Le modèle pour afficher l'en-tête du site.
+ *
+ * Ce fichier est inclus en haut de chaque page du site. Il contient  
+ * les balises HTML de début, la navigation principale, et les éléments de l'en-tête 
+ * tels que le logo et les informations de contact.
+ *
+ * @package thème WordPress motaphoto
+ */
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
@@ -47,5 +59,4 @@
                 ?>
             </div>
         </header>
-        <main id="content" class="site-content">
-        <!-- Main content -->
+        <main id="content" class="site-content"><!-- Main content -->

@@ -1,0 +1,97 @@
+.photo-catalog {
+    margin-left: clamp(1rem, 5vw + 2rem, 9.125rem);
+    margin-right: clamp(1rem, 5vw + 2rem, 9.125rem);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 3.25rem;
+    gap: 20px;
+
+
+    &__media {
+        flex: 1 1 calc(50% - 20px);
+        min-width: 404px;
+        max-width: 585px;
+        aspect-ratio: 585/513;
+        position: relative;
+        display: inline-block;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            max-width: 585px;
+            max-height: 513px;
+            display: block;
+        }
+    }
+
+    &__media:hover .photo-overlay {
+        opacity: 1;
+        /* Show overlay on hover */
+        visibility: visible;
+        /* Make sure it's interactable */
+    }
+}
+
+.photo-catalog__media:nth-last-child(1):nth-child(odd) {
+    flex: 0 0 49%;
+    margin-right: auto;
+}
+
+#load-more-container {
+    #load-more {
+        display: block;
+        width: 15.125rem;
+        height: 3.125rem;
+        font-family: 'Space Mono';
+        margin: 2.5rem auto 0;
+        text-align: center;
+        padding: 0.5rem 0.938rem;
+        background: var(--color-button-primary-bg);
+        border-radius: 2px;
+        cursor: pointer;
+        border: 2px solid #fff;
+        color: var(--color-button-primary-text);
+        transition: background-color 0.8s ease, color 0.8s ease;
+    }
+
+    #load-more:hover {
+        background-color: var(--color-button-hover-bg);
+        color: var(--color-button-hover-text);
+        font-weight: 700;
+    }
+}
+
+@media (max-width: $breakpoint__laptop) {
+    .photo-catalog {
+        padding-top: 0;
+        justify-content: center;
+    }
+   
+}
+
+@media (max-width: $breakpoint__large_phone) {
+    .photo-catalog {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        justify-content: center;
+
+        &__media {
+            flex: 1 1 calc(100% - 2rem);
+            /* Ensure single column layout */
+            min-width: 300px;
+            max-width: 100%;
+        }
+    }
+}
+
+
+
+@media (max-width: 992px) {
+    .photo-catalog__media:nth-last-child(1):nth-child(odd) {
+        flex: 1 1 calc(50% - 20px);
+        margin-right: unset;
+        
+    }
+}
